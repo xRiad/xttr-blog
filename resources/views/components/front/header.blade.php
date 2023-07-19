@@ -10,19 +10,19 @@
             </div>
             <nav class="tm-nav" id="tm-nav">            
                 <ul>
-                    <li class="tm-nav-item active"><a href="{{ route('home') }}" class="tm-nav-link">
+                    <li class="tm-nav-item {{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{ route('home') }}" class="tm-nav-link">
                         <i class="fas fa-home"></i>
                         Blog Home
                     </a></li>
-                    <li class="tm-nav-item"><a href="{{ route('posts.show', ['post' => 5]) }}" class="tm-nav-link">
+                    <li class="tm-nav-item {{ request()->routeIs('posts.show') ? 'active' : '' }}"><a href="{{ route('posts.show', ['post' => 5]) }}" class="tm-nav-link">
                         <i class="fas fa-pen"></i>
                         Single Post
                     </a></li>
-                    <li class="tm-nav-item"><a href="{{ route('about') }}" class="tm-nav-link">
+                    <li class="tm-nav-item {{ request()->routeIs('about') ? 'active' : '' }}"><a href="{{ route('about') }}" class="tm-nav-link">
                         <i class="fas fa-users"></i>
                         About Xtra
                     </a></li>
-                    <li class="tm-nav-item"><a href="{{ route('contact') }}" class="tm-nav-link">
+                    <li class="tm-nav-item {{ request()->routeIs('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}" class="tm-nav-link">
                         <i class="far fa-comments"></i>
                         Contact Us
                     </a></li>

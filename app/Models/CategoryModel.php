@@ -5,9 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriesModel extends Model
+use App\Models\PostModel;
+
+class CategoryModel extends Model
 {
     use HasFactory;
     protected $table = 'categories';
     protected $guarded = [];
+
+    public function posts () {
+        return $this->hasMany(PostModel::class);
+    }
 }

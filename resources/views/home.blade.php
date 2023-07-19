@@ -19,7 +19,11 @@
             {{ substr($post->desc, 0, 50) }}...
         </p>
         <div class="d-flex justify-content-between tm-pt-45">
-            <span class="tm-color-primary">Travel . Events</span>
+            <span class="tm-color-primary">
+                @foreach($post->tags as $tag)
+                    {{ $tag->name }}
+                @endforeach
+            </span>
             <span class="tm-color-primary">June 24, 2020</span>
         </div>
         <hr>

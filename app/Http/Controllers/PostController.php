@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PostModel;
-use App\Models\CategoriesModel;
 
 class PostController extends Controller
 {
@@ -38,9 +37,9 @@ class PostController extends Controller
     public function show(string $id)
     {
         try {
-            $post = PostModel::firstOrFail();
-            $categories = CategoriesModel::all();
-
+            
+            $post = PostModel::with('tags')->findOrFail($id);
+            dd($post->categories);
             return view('post', ['post' => $post, 'categories' => $categories]);
         } catch (\Throwable $th) {
             return $th->getMessage();

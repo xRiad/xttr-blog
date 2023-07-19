@@ -20,7 +20,14 @@
                 <p>
                     {{ $post->desc }}
                 </p>
-                <span class="d-block text-right tm-color-primary">Creative . Design . Business</span>
+                <span class="d-block text-right tm-color-primary">
+                    @foreach($post->tags as $tag) 
+                    {{ $tag->name }}
+                        @if(!($loop->last))
+                         .
+                        @endif
+                    @endforeach
+                </span>
             </div>
             
             <!-- Comments -->
