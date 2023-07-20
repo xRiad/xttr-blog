@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PostModel;
+use App\Models\CategoryModel;
+use App\Models\CommentModel;
+
 
 class PostController extends Controller
 {
@@ -34,17 +37,26 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
-        try {
-            
-            $post = PostModel::with('tags')->findOrFail($id);
-            dd($post->categories);
-            return view('post', ['post' => $post, 'categories' => $categories]);
-        } catch (\Throwable $th) {
-            return $th->getMessage();
-        }
-    }
+        
+        $post = PostModel::with('tags', 'comments')->findOrFail($id);
+        $tagIds=$post->tags->pluck('id');
+        $categoryId = $post->category_id;
+
+        $relatedPosts = PostModel::whereHas('tags',function ($query) use($tagIds, $id) {
+            $query->whereIn('tag_id',$tagIds);
+        })->whereHas('categories', function ($query) use($categoryId) {
+            $query->where('id','=',$categoryId);
+        })->where('id', '!=', $id)->get();
+
+        $categories = CategoryModel::all();
+
+
+        $post->views += 1;
+        $post->save();
+
+        return view('post', ['post' => $post, 'categories' => $categories, 'relatedPosts' => $relatedPosts]); }
 
     /**
      * Show the form for editing the specified resource.

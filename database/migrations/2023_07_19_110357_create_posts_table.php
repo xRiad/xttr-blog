@@ -21,8 +21,9 @@ return new class extends Migration
             $table->integer('status')->nullable();
             $table->boolean('visibility')->default(true);
             $table->string('author');
-            // dobavit category id for relation
-            $table->timestamps();
+            $table->unsignedBigInteger('views')->default(0);
+            $table->unsignedBigInteger('category_id');
+            $table->string('date');
         });
     }
 

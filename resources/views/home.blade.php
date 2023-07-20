@@ -25,10 +25,11 @@
                 @endforeach
             </span>
             <span class="tm-color-primary">June 24, 2020</span>
+            <span class="tm-color-primary">views - {{ $post->views }}</span>
         </div>
         <hr>
         <div class="d-flex justify-content-between">
-            <span>36 comments</span>
+            <span>{{ count($post->comments) }} comments</span>
             <span>by {{ $post->author }}</span>
         </div>
     </article>  
