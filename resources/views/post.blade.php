@@ -76,7 +76,7 @@
             <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
             <ul class="tm-mb-75 pl-5 tm-category-list">
                 @foreach($categories as $category)
-                <li><a href="#" class="tm-color-primary">{{ $category->name }}</a></li>
+                <li><a href="{{ route('search.category', $category->id) }}" class="tm-color-primary">{{ $category->name }}</a></li>
                 @endforeach
             </ul>
             <hr class="mb-3 tm-hr-primary">

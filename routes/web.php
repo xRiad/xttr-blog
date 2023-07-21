@@ -6,6 +6,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,12 @@ use App\Http\Controllers\CommentController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/search/{categoryid}', [SearchController::class, 'byCategory'])->name('search.category');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::get('/contactaa', [ContactController::class, 'index'])->name('contact');
-Route::get('/contact', [PostController::class, 'index'])->name('posts.index');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+// Route::get('/contact', [PostController::class, 'index'])->name('posts.index');
+Route::post('/contact/save', [ContactController::class, 'saveLetter'])->name('contact.save');
 Route::post('/comment/save/{postid}', [CommentController::class, 'save'])->name('comment.save');
-
 
 Route::resource('posts', PostController::class)->names('posts');

@@ -16,7 +16,8 @@
         <h2 class="tm-color-primary tm-post-title tm-mb-60">Contact Us</h2>
     </div>
     <div class="col-lg-7 tm-contact-left">
-        <form method="POST" action="" class="mb-5 ml-auto mr-0 tm-contact-form">                        
+        <form method="POST" action="{{ route('contact.save') }}" class="mb-5 ml-auto mr-0 tm-contact-form">                        
+            @csrf
             <div class="form-group row mb-4">
                 <label for="name" class="col-sm-3 col-form-label text-right tm-color-primary">Name</label>
                 <div class="col-sm-9">
@@ -50,41 +51,37 @@
     </div>
     <div class="col-lg-5 tm-contact-right">
         <address class="mb-4 tm-color-gray">
-            120 Lorem ipsum dolor sit amet,
-            consectetur adipiscing 10550
+            {{ $contact->adress ?? '' }}
         </address>
         <span class="d-block">
             Tel:
-            <a href="tel:060-070-0980" class="tm-color-gray">060-070-0980</a>
+            <a href="tel:{{ $contact->phone ?? '' }}" class="tm-color-gray">{{ $contact->phone ?? 'Nothing there for now...' }}</a>
         </span>
         <span class="mb-4 d-block">
             Email:
-            <a href="mailto:info@company.com" class="tm-color-gray">info@company.com</a>
+            <a href="mailto:{{ $contact->email ?? '' }}" class="tm-color-gray">{{ $contact->email ?? 'Nothing there for now...' }}</a>
         </span>
         <p class="mb-5 tm-line-height-short">
-            Maecenas eu mi eu dui cursus
-            consequat non eu metus. Morbi ac
-            turpis eleifend, commodo purus
-            eget, commodo mauris.
+            {{ $contact->info ?? '' }}
         </p>
         <ul class="tm-social-links">
             <li class="mb-2">
-                <a href="https://facebook.com" class="d-flex align-items-center justify-content-center">
+                <a href="https://facebook.com/{{ $contact->facebook ?? '' }}" class="d-flex align-items-center justify-content-center">
                     <i class="fab fa-facebook"></i>
                 </a>
             </li>
             <li class="mb-2">
-                <a href="https://twitter.com" class="d-flex align-items-center justify-content-center">
+                <a href="https://twitter.com/{{ $contact->twitter ?? '' }}" class="d-flex align-items-center justify-content-center">
                     <i class="fab fa-twitter"></i>
                 </a>
             </li>
             <li class="mb-2">
-                <a href="https://youtube.com" class="d-flex align-items-center justify-content-center">
+                <a href="https://youtube.com/{{ $contact->youtube ?? '' }}" class="d-flex align-items-center justify-content-center">
                     <i class="fab fa-youtube"></i>
                 </a>
             </li>
             <li class="mb-2">
-                <a href="https://instagram.com" class="d-flex align-items-center justify-content-center mr-0">
+                <a href="https://instagram.com/{{ $contact->instagram ?? '' }}" class="d-flex align-items-center justify-content-center mr-0">
                     <i class="fab fa-instagram"></i>
                 </a>
             </li>

@@ -5,15 +5,17 @@ namespace App\View\Components\front;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Services\ContactService;
 
 class Header extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $contacts;
+    public function __construct(ContactService $contactService)
     {
-        //
+        $this->contact = $contactService->getAllContacts();
     }
 
     /**
