@@ -22,9 +22,9 @@ class CommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:50',
+            'name' => 'required|min:3',
             'email' => 'required|email',
-            'message' => 'required|max:400'
+            'message' => 'required'
         ];
     }
 }

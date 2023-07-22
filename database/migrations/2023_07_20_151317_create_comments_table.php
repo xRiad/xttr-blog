@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('commentary_content');
             $table->unsignedBigInteger('post_id');
             $table->string('date');
+            $table->timestamps();
         });
     }
 

@@ -21,25 +21,37 @@
             <div class="form-group row mb-4">
                 <label for="name" class="col-sm-3 col-form-label text-right tm-color-primary">Name</label>
                 <div class="col-sm-9">
-                    <input class="form-control mr-0 ml-auto" name="name" id="name" type="text" required>                            
+                    <input class="form-control mr-0 ml-auto @error('name') is-invalid @enderror" name="name" id="name" type="text" required>                            
+                    @error('name')
+                    <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row mb-4">
                 <label for="email" class="col-sm-3 col-form-label text-right tm-color-primary">Email</label>
                 <div class="col-sm-9">
-                    <input class="form-control mr-0 ml-auto" name="email" id="email" type="email" required>
+                    <input class="form-control mr-0 ml-auto @error('email') is-invalid @enderror" name="email" id="email" type="email" required>
+                    @error('email')
+                    <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row mb-4">
                 <label for="subject" class="col-sm-3 col-form-label text-right tm-color-primary">Subject</label>
                 <div class="col-sm-9">
-                    <input class="form-control mr-0 ml-auto" name="subject" id="subject" type="text" required>
+                    <input class="form-control mr-0 ml-auto @error('subject') is-invalid @enderror" name="subject" id="subject" type="text" required>
+                    @error('subject')
+                    <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row mb-5">
                 <label for="message" class="col-sm-3 col-form-label text-right tm-color-primary">Message</label>
                 <div class="col-sm-9">
-                    <textarea class="form-control mr-0 ml-auto" name="message" id="message" rows="8" required></textarea>                                
+                    <textarea class="form-control mr-0 ml-auto @error('message') is-invalid @enderror" name="message" id="message" rows="8" required></textarea>                                
+                    @error('message')
+                    <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form-group row text-right">

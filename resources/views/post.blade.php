@@ -54,13 +54,22 @@
                     @csrf
                     <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
                     <div class="mb-4">
-                        <input class="form-control" name="name" placeholder="name" type="text">
+                        <input class="form-control @error('name') is-invalid @enderror" name="name" placeholder="name" type="text" required> 
+                        @error('name')
+                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-4">
-                        <input class="form-control" name="email" placeholder="email" type="text">
+                        <input class="form-control @error('email') is-invalid @enderror" name="email" placeholder="email" type="email" required>
+                        @error('email')
+                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-4">
-                        <textarea class="form-control" name="message" placeholder="message" rows="6"></textarea>
+                        <textarea class="form-control @error('message') is-invalid @enderror" name="message" placeholder="message" rows="6" required></textarea>
+                        @error('message')
+                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="text-right">
                         <button class="tm-btn tm-btn-primary tm-btn-small">Submit</button>                        
@@ -72,6 +81,7 @@
     </div>
     <aside class="col-lg-4 tm-aside-col">
         <div class="tm-post-sidebar">
+            @if(count($categories) !== 0)
             <hr class="mb-3 tm-hr-primary">
             <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
             <ul class="tm-mb-75 pl-5 tm-category-list">
@@ -79,6 +89,8 @@
                 <li><a href="{{ route('search.category', $category->id) }}" class="tm-color-primary">{{ $category->name }}</a></li>
                 @endforeach
             </ul>
+            @endif
+            @if(count($relatedPosts) !== 0)
             <hr class="mb-3 tm-hr-primary">
             <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
             @foreach($relatedPosts as $post)
@@ -89,6 +101,7 @@
                 </figure>
             </a>
             @endforeach
+            @endif
         </div>                    
     </aside>
 </div>

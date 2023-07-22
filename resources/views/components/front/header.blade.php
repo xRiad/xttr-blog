@@ -14,7 +14,7 @@
                         <i class="fas fa-home"></i>
                         Blog Home
                     </a></li>
-                    <li class="tm-nav-item {{ request()->routeIs('posts.show') ? 'active' : '' }}"><a href="{{ route('posts.show', ['post' => 5]) }}" class="tm-nav-link">
+                    <li class="tm-nav-item {{ request()->routeIs('posts.show') ? 'active' : '' }}"><a href="{{ route('posts.random') }}" class="tm-nav-link">
                         <i class="fas fa-pen"></i>
                         Single Post
                     </a></li>

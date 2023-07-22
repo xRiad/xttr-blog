@@ -22,8 +22,9 @@ return new class extends Migration
             $table->boolean('visibility')->default(true);
             $table->string('author');
             $table->unsignedBigInteger('views')->default(0);
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('date');
+            $table->timestamps();
         });
     }
 

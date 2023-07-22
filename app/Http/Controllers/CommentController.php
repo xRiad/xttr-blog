@@ -10,20 +10,19 @@ use Carbon\Carbon;
 class CommentController extends Controller
 {
     public function save(CommentRequest $request, $postid) {
-        try {
-            $comment = new CommentModel;
+        $comment = new CommentModel;
 
-            $comment->name = $request->name; 
-            $comment->email = $request->email; 
-            $comment->commentary_content = $request->message; 
-            $comment->post_id = $postid;
-            $comment->date = Carbon::now()->format('F j, Y'); 
-            $comment->save();
-            
+        $comment->name = $request->name; 
+        $comment->email = $request->email; 
+        $comment->commentary_content = $request->message; 
+        $comment->post_id = $postid;
+        $comment->date = Carbon::now()->format('F j, Y'); 
+        
+        
+        if($comment->save()) {
             return redirect()->back();
-        } catch (\Throwable $th) {
-            dd($th->getMessage());
-            return redirect()->back()->with('failure', 'Somethin went wrong. Please return later.');
+        } else {
+            return redirect()->back()->with('failure', 'Something went wrong. Please return later.');
         }
     }
 }

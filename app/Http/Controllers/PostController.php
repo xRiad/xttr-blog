@@ -11,7 +11,7 @@ use App\Models\CommentModel;
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * display a listing of the resource.
      */
     public function index()
     {
@@ -19,7 +19,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * show the form for creating a new resource.
      */
     public function create()
     {
@@ -27,28 +27,47 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(request $request)
     {
         //
     }
 
     /**
-     * Display the specified resource.
+     * display the specified resource.
      */
     public function show(int $id)
     {
-        
         $post = PostModel::with('tags', 'comments')->findOrFail($id);
-        $tagIds=$post->tags->pluck('id');
-        $categoryId = $post->category_id;
+        $tagids=$post->tags->pluck('id');
+        $categoryid = $post->category_id;
 
-        $relatedPosts = PostModel::whereHas('tags',function ($query) use($tagIds, $id) {
-            $query->whereIn('tag_id',$tagIds);
-        })->whereHas('categories', function ($query) use($categoryId) {
-            $query->where('id','=',$categoryId);
+        $relatedposts = PostModel::wherehas('tags',function ($query) use($tagids, $id) {
+            $query->wherein('tag_id',$tagids);
+        })->wherehas('categories', function ($query) use($categoryid) {
+            $query->where('id','=',$categoryid);
         })->where('id', '!=', $id)->get();
+
+        $categories = categorymodel::all();
+
+
+        $post->views += 1;
+        $post->save();
+
+        return view('post', ['post' => $post, 'categories' => $categories, 'relatedPosts' => $relatedposts]); 
+    }
+
+    public function random() {
+        $post = PostModel::inRandomOrder()->with('tags', 'comments')->first();
+        $tagids=$post->tags->pluck('id');
+        $categoryid = $post->category_id;
+
+        $relatedposts = PostModel::wherehas('tags',function ($query) use($tagids) {
+            $query->wherein('tag_id',$tagids);
+        })->wherehas('categories', function ($query) use($categoryid) {
+            $query->where('id','=',$categoryid);
+        })->get();
 
         $categories = CategoryModel::all();
 
@@ -56,10 +75,11 @@ class PostController extends Controller
         $post->views += 1;
         $post->save();
 
-        return view('post', ['post' => $post, 'categories' => $categories, 'relatedPosts' => $relatedPosts]); }
+        return view('post', ['post' => $post, 'categories' => $categories, 'relatedPosts' => $relatedposts]); 
+    }
 
     /**
-     * Show the form for editing the specified resource.
+     * show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
@@ -67,15 +87,15 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(request $request, string $id)
     {
         //
     }
 
     /**
-     * Remove the specified resource from storage.
+     * remove the specified resource from storage.
      */
     public function destroy(string $id)
     {

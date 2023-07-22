@@ -14,15 +14,8 @@ return new class extends Migration
         Schema::create('about', function (Blueprint $table) {
             $table->id();
             $table->string('img')->nullable();
-            $table->string('title');
-            $table->text('about_content');
-            $table->string('card_title');
-            $table->string('card_content');
-            $table->string('card_icon');
-            $table->string('employes_name');
-            $table->string('employes_avatar');
-            $table->string('employes_position');
-            $table->text('employes_about');
+            $table->string('title')->nullable();
+            $table->text('about_content')->nullable();
             $table->timestamps();
         });
     }

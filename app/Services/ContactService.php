@@ -8,7 +8,7 @@ class ContactService
 {
     public function getAllContacts()
     {
-        return ContactModel::all();
+        return ContactModel::first();
     }
 
     // You can add more methods here to handle specific data retrieval or business logic related to contacts.
