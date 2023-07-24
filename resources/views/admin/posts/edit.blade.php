@@ -8,14 +8,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        {{-- <div class="card-header">
+                        <div class="card-header">
                           text: {{session('failure')}}
                           @if(session('success'))
                             <h3 class="card-title">{{ session('success') }}</h3>
                           @elseif(session('failure'))
                             <h3 class="card-title">{{ session('failure') }}</h3>
                           @endif
-                        </div> --}}
+                        </div>
                         <!-- /.card-header -->
                         <div class="row1 ">
                         </div>
@@ -26,7 +26,7 @@
                             @method('PUT')
                             <div class="form-group">
                               <label for="exampleinputemail1">Post name</label>
-                              <input type="text" name="name" value="{{ $post->name }}" class="form-control @error('name') is-invalid @enderror" placeholder="name">
+                              <input type="text" name="name" value="{{ old('name', $post->name) }}" class="form-control @error('name') is-invalid @enderror" placeholder="name">
                               @error('name')
                               <div class="alert alert-danger">
                                  {{$message}}
@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group">
                               <label for="exampleinputemail1">author</label>
-                              <input type="text" name="author" value="{{ $post->author }}" class="form-control @error('author') is-invalid @enderror" placeholder="author">
+                              <input type="text" name="author" value="{{ old('author', $post->author) }}" class="form-control @error('author') is-invalid @enderror" placeholder="author">
                               @error('author')
                               <div class="alert alert-danger">
                                  {{$message}}
@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                               <label for="exampleinputemail1">video</label>
-                              <input type="text" name="video" value="{{ $post->video }}" class="form-control @error('video') is-invalid @enderror" placeholder="video">
+                              <input type="text" name="video" value="{{ old('video', $post->video) }}" class="form-control @error('video') is-invalid @enderror" placeholder="video">
                               @error('video')
                               <div class="alert alert-danger">
                                  {{$message}}
@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group">
                               <label for="desc">description</label>
-                              <textarea name="desc" id="summernote">{!! $post->desc !!}</textarea>
+                              <textarea name="desc" id="summernote">{!! old('desc', $post->desc) !!}</textarea>
                               @error('desc')
                               <div class="alert alert-danger">
                                  {{$message}}

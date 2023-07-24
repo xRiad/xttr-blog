@@ -54,12 +54,37 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.posts') }}" class="nav-link">
-                        <i class="nav-icon far fa-calendar-alt"></i>
-                        <p>
-                            Posts
-                        </p>
-                    </a>
+                    <form action="{{ route('admin.posts') }}" method="GET">
+                        @csrf
+                        <button type="submit"  class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                Posts
+                            </p>
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('admin.about.edition') }}" method="GET">
+                        @csrf
+                        <button type="submit"  class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                About
+                            </p>
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('admin.about-cards.index') }}" method="GET">
+                        @csrf
+                        <button type="submit"  class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                About Cards
+                            </p>
+                        </button>
+                    </form>
                 </li>
 
             </ul>

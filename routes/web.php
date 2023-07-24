@@ -8,6 +8,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SearchController;
 
+
+use App\Http\Controllers\Admin\AdminAboutController;
+use App\Http\Controllers\Admin\AdminAboutCardsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,4 +37,8 @@ Route::resource('posts', PostController::class)->names('posts');
 Route::get('/admin', fn () => view('admin.index'));
 Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts');
 // Route::get('/admin/posts/creation', [PostController::class, 'creation'])->name('admin.posts.creation');
-// Route::get('/admin/posts/edition', [PostController::class, 'edition'])->name('admin.posts.edition');
+
+Route::get('/admin/about/edition', [AdminAboutController::class, 'edition'])->name('admin.about.edition');
+Route::put('/admin/about/update', [AdminAboutController::class, 'update'])->name('admin.about.update');
+Route::get('/admin/about-cards', [AdminAboutCardsController::class, 'index'])->name('admin.about-cards.index');
+

@@ -12,6 +12,7 @@ use App\Models\CommentModel;
 use App\Models\StatusModel;
 use App\Models\TagModel;
 use App\Models\PostTagModel;
+use App\Http\Requests\PostRequest;
 use Carbon\Carbon;
 
 class PostController extends Controller
@@ -41,13 +42,13 @@ class PostController extends Controller
     /**
      * store a newly created resource in storage.
      */
-    public function store(request $request)
+    public function store(PostRequest $request)
     {
         try {
             $img = $request->img;
             $imgExtension = $img->getClientOriginalExtension();
             $imgName = time() . '.' . $imgExtension;
-            $imgPath = 'app/public/images/' . $imgName;
+            $imgPath = 'app\\public\\images\\' . $imgName;
             $resizedImage = Image::make($img)->resize(600, 500)->save(storage_path($imgPath));
 
             $post = new PostModel;
@@ -75,9 +76,9 @@ class PostController extends Controller
                 }
             }
 
-            return back()->with('success', 'post has been saved successfully !');
+            return redirect()->back()->with('success', 'post has been saved successfully !');
         } catch (Exception $e) {
-            return back()->with('failure', $e->getMessage());
+            return redirect()->back()->with('failure', $e->getMessage());
         }
     }
 
@@ -144,13 +145,13 @@ class PostController extends Controller
     /**
      * update the specified resource in storage.
      */
-    public function update(request $request, int $id)
+    public function update(PostRequest $request, int $id)
     {
         try {
             $post = PostModel::with('tags')->findOrFail($id);
 
 
-            $imgPath = 'app/public/images/' . $request->img;
+            $imgPath = 'app/public/images/' . $post->img;
             if (File::exists(storage_path($imgPath))) {
                 File::delete(storage_path($imgPath));
             }
@@ -194,9 +195,9 @@ class PostController extends Controller
                 }
             }
 
-            return back()->with('success', 'post has been saved successfully !');
+            return redirect()->back()->with('success', 'post has been saved successfully !');
         } catch (Exception $e) {
-            return back()->with('failure', $e->getMessage());
+            return redirect()->back()->with('failure', $e->getMessage());
         }
     }
 

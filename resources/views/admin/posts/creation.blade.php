@@ -8,14 +8,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        {{-- <div class="card-header">
+                        <div class="card-header">
                           text: {{session('failure')}}
                           @if(session('success'))
                             <h3 class="card-title">{{ session('success') }}</h3>
                           @elseif(session('failure'))
                             <h3 class="card-title">{{ session('failure') }}</h3>
                           @endif
-                        </div> --}}
+                        </div>
                         <!-- /.card-header -->
                         <div class="row1 ">
                         </div>
