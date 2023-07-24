@@ -10,7 +10,7 @@
                 <img src="assets/front/img/img-01.jpg" alt="Image" class="img-fluid">                            
             </div>
             @if(filled($post->status))
-            <span class="position-absolute tm-new-badge">New{{ ['New'][$post->status] }}</span>
+            <span class="position-absolute tm-new-badge">{{ $post->status->name }}</span>
             @endif
             <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ $post->name }}</h2>
         </a>                    

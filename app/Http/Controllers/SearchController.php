@@ -10,7 +10,7 @@ class SearchController extends Controller
 {
     public function index (SearchRequest $request) {
         $query = $request->input('query');
-        $posts = PostModel::with('tags', 'comments')->whereRaw('LOWER(`name`) LIKE ? ', ['%'.trim(strtolower($query)).'%'])->paginate(2);
+        $posts = PostModel::with('tags', 'comments', 'status')->whereRaw('LOWER(`name`) LIKE ? ', ['%'.trim(strtolower($query)).'%'])->paginate(2);
         return view('search', ['posts' => $posts]);
     } 
 

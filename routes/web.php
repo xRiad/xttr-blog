@@ -30,3 +30,8 @@ Route::post('/comment/save/{postid}', [CommentController::class, 'save'])->name(
 
 Route::get('/posts/random', [PostController::class, 'random'])->name('posts.random');
 Route::resource('posts', PostController::class)->names('posts');
+
+Route::get('/admin', fn () => view('admin.index'));
+Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts');
+// Route::get('/admin/posts/creation', [PostController::class, 'creation'])->name('admin.posts.creation');
+// Route::get('/admin/posts/edition', [PostController::class, 'edition'])->name('admin.posts.edition');

@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('img');
             $table->text('desc');
             $table->string('slug')->unique();
-            $table->integer('status')->nullable();
+            $table->integer('status_id')->nullable();
             $table->boolean('visibility')->default(true);
             $table->string('author');
             $table->unsignedBigInteger('views')->default(0);
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->integer('category_id')->nullable();
             $table->string('date');
             $table->timestamps();
         });
