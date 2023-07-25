@@ -97,6 +97,61 @@
                         </button>
                     </form>
                 </li>
+                <li class="nav-item">
+                    <form action="{{ route('admin.categories.index') }}" method="GET">
+                        @csrf
+                        <button type="submit"  class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                Categories
+                            </p>
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('admin.contact.edit') }}" method="GET">
+                        @csrf
+                        <button type="submit"  class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                Contacts
+                            </p>
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('admin.letter') }}" method="GET">
+                        @csrf
+                        <button type="submit"  class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                Letters
+                            </p>
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('admin.statuses.index') }}" method="GET">
+                        @csrf
+                        <button type="submit"  class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                Statuses
+                            </p>
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('admin.tags.index') }}" method="GET">
+                        @csrf
+                        <button type="submit"  class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                Tags
+                            </p>
+                        </button>
+                    </form>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

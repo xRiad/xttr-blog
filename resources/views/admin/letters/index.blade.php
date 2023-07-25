@@ -1,3 +1,4 @@
+
 @extends('admin.layouts.app')
 @section('content')
 
@@ -14,12 +15,6 @@
                           @endif
                         </div>
                         <!-- /.card-header -->
-                        <div class="row1 ">
-                          <form action="{{ route('admin.about-employes.create') }}" method="GET">
-                            @csrf
-                            <button  class="btn btn-success ml-3 mt-2">Create</button>
-                          </form>
-                        </div>
 
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
@@ -27,32 +22,26 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Avatar</th>
-                                    <th>Position</th>
-                                    <th>About</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
                                     <th>Delete</th>
-                                    <th>EDIT</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($employes as $employe)
+                                @foreach($letters as $letter)
                                     <tr>
-                                        <td>{{$employe->id}}</td>
-                                        <td>{{$employe->name}}</td>
-                                        <td>{{$employe->avatar}}</td>
-                                        <td>{{$employe->position}}</td>
-                                        <td>{{$employe->about}}</td>
+                                        <td>{{$letter->id}}</td>
+                                        <td>{{$letter->name}}</td>
+                                        <td>{{$letter->email}}</td>
+                                        <td>{{$letter->subject}}</td>
+                                        <td>{{$letter->message}}</td>
+
                                         <td>
-                                            <form action="{{ route('admin.about-employes.destroy', $employe->id) }}" method="POST">
+                                            <form action="{{ route('admin.letter.delete', $letter->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('admin.about-employes.edit', $employe->id) }}" method="GET">
-                                                @csrf
-                                                <button type="submit" class="btn btn-primary">Edit</button>
                                             </form>
                                         </td>
                                     </tr>

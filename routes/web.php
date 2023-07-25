@@ -11,6 +11,11 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\AboutController as AdminAboutController;
 use App\Http\Controllers\Admin\AboutCardController;
 use App\Http\Controllers\Admin\AboutEmployeController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LetterController;
+use App\Http\Controllers\Admin\StatusController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\TagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +48,10 @@ Route::put('/admin/about/update', [AdminAboutController::class, 'update'])->name
 
 Route::resource('admin/about-cards', AboutCardController::class)->names('admin.about-cards');
 Route::resource('admin/about-employes', AboutEmployeController::class)->names('admin.about-employes');
+Route::resource('admin/categories', CategoryController::class)->names('admin.categories');
+Route::resource('admin/statuses', StatusController::class)->names('admin.statuses');
+Route::resource('admin/tags', TagController::class)->names('admin.tags');
+Route::get('/admin/contact/edit', [AdminContactController::class, 'edit'])->name('admin.contact.edit');
+Route::put('/admin/contact/update', [AdminContactController::class, 'update'])->name('admin.contact.update');
+Route::get('/admin/letters', [LetterController::class, 'index'])->name('admin.letter');
+Route::delete('/admin/letters/delete/{letter}', [LetterController::class, 'delete'])->name('admin.letter.delete');
