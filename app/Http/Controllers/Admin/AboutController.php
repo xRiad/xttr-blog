@@ -9,9 +9,9 @@ use Intervention\Image\Facades\Image;
 use App\Models\AboutModel;
 use App\Http\Requests\AboutRequest;
 
-class AdminAboutController extends Controller
+class AboutController extends Controller
 {
-    public function edition () {
+    public function edit () {
         $about = AboutModel::firstOrFail();
 
         return view('admin.about.edit', ['about' => $about]);

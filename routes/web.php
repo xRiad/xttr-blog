@@ -8,9 +8,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SearchController;
 
-
-use App\Http\Controllers\Admin\AdminAboutController;
-use App\Http\Controllers\Admin\AdminAboutCardsController;
+use App\Http\Controllers\Admin\AboutController as AdminAboutController;
+use App\Http\Controllers\Admin\AboutCardController;
+use App\Http\Controllers\Admin\AboutEmployeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +38,8 @@ Route::get('/admin', fn () => view('admin.index'));
 Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts');
 // Route::get('/admin/posts/creation', [PostController::class, 'creation'])->name('admin.posts.creation');
 
-Route::get('/admin/about/edition', [AdminAboutController::class, 'edition'])->name('admin.about.edition');
+Route::get('/admin/about/edit', [AdminAboutController::class, 'edit'])->name('admin.about.edit');
 Route::put('/admin/about/update', [AdminAboutController::class, 'update'])->name('admin.about.update');
-Route::get('/admin/about-cards', [AdminAboutCardsController::class, 'index'])->name('admin.about-cards.index');
 
+Route::resource('admin/about-cards', AboutCardController::class)->names('admin.about-cards');
+Route::resource('admin/about-employes', AboutEmployeController::class)->names('admin.about-employes');

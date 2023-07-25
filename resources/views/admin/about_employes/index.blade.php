@@ -15,7 +15,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="row1 ">
-                          <form action="{{ route('admin.about-cards.create') }}" method="GET">
+                          <form action="{{ route('admin.about-employes.create') }}" method="GET">
                             @csrf
                             <button  class="btn btn-success ml-3 mt-2">Create</button>
                           </form>
@@ -27,30 +27,31 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Content</th>
-                                    <th>Icon</th>
+                                    <th>Name</th>
+                                    <th>Avatar</th>
+                                    <th>Position</th>
+                                    <th>About</th>
                                     <th>Delete</th>
                                     <th>EDIT</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                @foreach($cards as $card)
+                                @foreach($employes as $employe)
                                     <tr>
-                                        <td>{{$card->id}}</td>
-                                        <td>{{$card->title}}</td>
-                                        <td>{{$card->content}}</td>
-                                        <td>{{$card->icon}}</td>
+                                        <td>{{$employe->id}}</td>
+                                        <td>{{$employe->name}}</td>
+                                        <td>{{$employe->avatar}}</td>
+                                        <td>{{$employe->position}}</td>
+                                        <td>{{$employe->about}}</td>
                                         <td>
-                                            <form action="{{ route('admin.about-cards.destroy', $card->id) }}" method="POST">
+                                            <form action="{{ route('admin.about-employes.destroy', $employe->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                         </td>
                                         <td>
-                                            <form action="{{ route('admin.about-cards.edit', $card->id) }}" method="GET">
+                                            <form action="{{ route('admin.about-employes.edit', $employe->id) }}" method="GET">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Edit</button>
                                             </form>

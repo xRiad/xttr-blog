@@ -65,7 +65,7 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <form action="{{ route('admin.about.edition') }}" method="GET">
+                    <form action="{{ route('admin.about.edit') }}" method="GET">
                         @csrf
                         <button type="submit"  class="nav-link">
                             <i class="nav-icon far fa-calendar-alt"></i>
@@ -81,12 +81,22 @@
                         <button type="submit"  class="nav-link">
                             <i class="nav-icon far fa-calendar-alt"></i>
                             <p>
-                                About Cards
+                                About cards
                             </p>
                         </button>
                     </form>
                 </li>
-
+                <li class="nav-item">
+                    <form action="{{ route('admin.about-employes.index') }}" method="GET">
+                        @csrf
+                        <button type="submit"  class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                About employes
+                            </p>
+                        </button>
+                    </form>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

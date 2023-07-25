@@ -36,7 +36,7 @@ class PostController extends Controller
         $categories = CategoryModel::all();
         $tags = TagModel::all();
 
-        return view('admin.posts.creation', ['statuses' => $statuses, 'categories' => $categories, 'tags' => $tags]);
+        return view('admin.posts.create', ['statuses' => $statuses, 'categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -124,9 +124,6 @@ class PostController extends Controller
         $post->save();
 
         return view('post', ['post' => $post, 'categories' => $categories, 'relatedPosts' => $relatedposts]); 
-    }
-
-    public function creation() {
     }
 
     /**
