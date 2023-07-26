@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\AboutSeeder;
 use Database\Seeders\AboutCardSeeder;
 use Database\Seeders\ContactSeeder;
+use Database\Seeders\AdminSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AboutSeeder::class);
         $this->call(AboutCardsSeeder::class);
         $this->call(ContactSeeder::class);
+        $this->call(AdminSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

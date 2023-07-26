@@ -3,9 +3,21 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use App\Http\Middleware\AdminAuth;
 
 class Kernel extends HttpKernel
 {
+    /**
+     * The application's route middleware.
+     *
+     * This property defines the middleware that can be applied to routes or route groups.
+     *
+     * @var array<string, class-string|string>
+     */
+    protected $routeMiddleware = [
+        'admin.auth' => \App\Http\Middleware\AdminAuth::class, 
+    ];
+    
     /**
      * The application's global HTTP middleware stack.
      *
