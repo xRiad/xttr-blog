@@ -23,6 +23,7 @@ class PostRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3',
+            'author' => 'required|string',
             'video' => 'string',
             'description' => 'required|string',
             'status' => 'integer',

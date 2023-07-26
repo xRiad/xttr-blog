@@ -7,11 +7,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                          @if(session('success'))
-                            <h3 class="card-title">{{ session('success') }}</h3>
-                          @elseif(session('failure'))
-                            <h3 class="card-title">{{ session('failure') }}</h3>
-                          @endif
+                            <h3 class="card-title">Tags</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="row1 ">

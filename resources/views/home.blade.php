@@ -5,7 +5,7 @@
     @foreach($posts as $post)
     <article class="col-12 col-md-6 tm-post">
         <hr class="tm-hr-primary">
-        <a href="{{ route('posts.show', $post->id) }}" class="effect-lily tm-post-link tm-pt-60">
+        <a href="{{ route('posts.detail', $post->slug) }}" class="effect-lily tm-post-link tm-pt-60">
             <div class="tm-post-link-inner">
                 <img src="assets/front/img/img-01.jpg" alt="Image" class="img-fluid">
             </div>
@@ -15,7 +15,7 @@
             <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ $post->name }}</h2>
         </a>
         <p class="tm-pt-30">
-            {{ substr($post->desc, 0, 50) }}...
+            {!! substr($post->desc, 0, 200) !!}...
         </p>
         <div class="d-flex justify-content-between tm-pt-45">
             <span class="tm-color-primary">
@@ -23,7 +23,7 @@
                     {{ $tag->name }}
                 @endforeach
             </span>
-            <span class="tm-color-primary">June 24, 2020</span>
+            <span class="tm-color-primary">{{ $post->date }}</span>
             <span class="tm-color-primary">views - {{ $post->views }}</span>
         </div>
         <hr>
@@ -33,8 +33,8 @@
         </div>
     </article>
     @endforeach
-    @if(count($posts) === 0)
-    There is nothing there for now !
+    @if($posts->isEmpty())
+    <div class="alert-primary alert">There is nothing there for now !</div>
     @endif 
 </div>
 {{-- Pagination --}}

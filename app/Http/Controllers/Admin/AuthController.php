@@ -18,7 +18,9 @@ class AuthController extends Controller
           'password' => $request->password
        ], $request->remember )) {
           return redirect()->route('admin.index');
-       } 
+       } else {
+          return redirect()->back();
+       }
     }
 
     public function logOut () {

@@ -7,11 +7,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
+                            <h3 class="card-title">Posts</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="row1 ">
-                          <form action="{{ route('posts.create') }}" method="GET">
+                          <form action="{{ route('admin.posts.create') }}" method="GET">
                             @csrf
                             <button  class="btn btn-success ml-3 mt-2">Create</button>
                           </form>
@@ -53,14 +53,14 @@
                                         <td>{{ $post->category->name ?? '' }}</td>
 
                                         <td>
-                                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                         </td>
                                         <td>
-                                            <form action="{{ route('posts.edit', $post->id) }}" method="GET">
+                                            <form action="{{ route('admin.posts.edit', $post->id) }}" method="GET">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary">Edit</button>
                                             </form>

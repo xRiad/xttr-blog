@@ -18,7 +18,7 @@
                 <h2 class="pt-2 tm-color-primary tm-post-title">{{ $post->name }}</h2>
                 <p class="tm-mb-40">{{ $post->date }} posted by {{ $post->author }}</p>
                 <p>
-                    {{ $post->desc }}
+                    {!! $post->desc !!}
                 </p>
                 <span class="d-block text-right tm-color-primary">
                     @foreach($post->tags as $tag) 

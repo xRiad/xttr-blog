@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     public function index () {
         $posts = PostModel::with('tags', 'comments', 'status')->paginate(2);
-        return view('home', ['posts' => $posts]);
+        return view('home', compact('posts'));
     }
 }

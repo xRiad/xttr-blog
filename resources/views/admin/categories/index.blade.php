@@ -6,14 +6,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                          @if(session('success'))
-                            <h3 class="card-title">{{ session('success') }}</h3>
-                          @elseif(session('failure'))
-                            <h3 class="card-title">{{ session('failure') }}</h3>
-                          @endif
-                        </div>
                         <!-- /.card-header -->
+                        <div class="card-header">
+                            <h3 class="card-title">Categories</h3>
+                        </div>
                         <div class="row1 ">
                           <form action="{{ route('admin.categories.create') }}" method="GET">
                             @csrf

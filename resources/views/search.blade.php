@@ -5,7 +5,7 @@
     @foreach($posts as $post)    
     <article class="col-12 col-md-6 tm-post">
         <hr class="tm-hr-primary">
-        <a href="{{ route('posts.show', $post->id) }}" class="effect-lily tm-post-link tm-pt-60">
+        <a href="{{ route('posts.detail', $post->slug) }}" class="effect-lily tm-post-link tm-pt-60">
             <div class="tm-post-link-inner">
                 <img src="assets/front/img/img-01.jpg" alt="Image" class="img-fluid">                            
             </div>

@@ -30,8 +30,10 @@ class AboutController extends Controller
 
         $img = $request->img;
         $imgExtension = $img->getClientOriginalExtension();
-        $imgName = time() . '.' . $imgExtension;
-        $imgPath = 'app/public/images/' . $imgName;
+        $spr = DIRECTORY_SEPARATOR;
+        $uuid = Str::uuid();
+        $imgName = "{$uuid}.{$imgExtension}";
+        $imgPath = "app{$spr}public{$spr}images{$spr}{$imgName}";
         $resizedImage = Image::make($img)->resize(600, 500)->save(storage_path($imgPath));
 
         $about->img = $imgName;

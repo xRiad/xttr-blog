@@ -10,9 +10,9 @@
                     <div class="card">
                         <div class="card-header">
                           @if(session('success'))
-                            <h3 class="card-title">{{ session('success') }}</h3>
+                            <h3 class="card-title alert alert-success">{{ session('success') }}</h3>
                           @elseif(session('failure'))
-                            <h3 class="card-title">{{ session('failure') }}</h3>
+                            <h3 class="card-title alert-danger alert">{{ session('failure') }}</h3>
                           @endif
                         </div>
                         <!-- /.card-header -->

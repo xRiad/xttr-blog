@@ -6,14 +6,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                          @if(session('success'))
-                            <h3 class="card-title">{{ session('success') }}</h3>
-                          @elseif(session('failure'))
-                            <h3 class="card-title">{{ session('failure') }}</h3>
-                          @endif
-                        </div>
                         <!-- /.card-header -->
+                        <div class="card-header">
+                            <h3 class="card-title">About employes</h3>
+                        </div>
                         <div class="row1 ">
                           <form action="{{ route('admin.about-employes.create') }}" method="GET">
                             @csrf
@@ -27,7 +23,6 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Avatar</th>
                                     <th>Position</th>
                                     <th>About</th>
                                     <th>Delete</th>
@@ -39,7 +34,6 @@
                                     <tr>
                                         <td>{{$employe->id}}</td>
                                         <td>{{$employe->name}}</td>
-                                        <td>{{$employe->avatar}}</td>
                                         <td>{{$employe->position}}</td>
                                         <td>{{$employe->about}}</td>
                                         <td>

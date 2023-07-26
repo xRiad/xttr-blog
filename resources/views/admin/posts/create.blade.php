@@ -9,11 +9,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                          text: {{session('failure')}}
+                          {{session('failure')}}
                           @if(session('success'))
-                            <h3 class="card-title">{{ session('success') }}</h3>
+                            <h3 class="card-title alert-success alert">{{ session('success') }}</h3>
                           @elseif(session('failure'))
-                            <h3 class="card-title">{{ session('failure') }}</h3>
+                            <h3 class="card-title alert-danger alert">{{ session('failure') }}</h3>
                           @endif
                         </div>
                         <!-- /.card-header -->
@@ -22,7 +22,7 @@
 
 
                         <div class="card-body">
-                          <form enctype="multipart/form-data" action="{{ route('posts.store') }}" method="post">
+                          <form enctype="multipart/form-data" action="{{ route('admin.posts.store') }}" method="post">
                             @csrf
                             <div class="form-group">
                               <label for="exampleinputemail1">post name</label>
@@ -53,8 +53,8 @@
                             </div>
                             <div class="form-group">
                               <label for="desc">description</label>
-                              <textarea name="desc" id="summernote"></textarea>
-                              @error('desc')
+                              <textarea name="description" id="summernote"></textarea>
+                              @error('description')
                               <div class="alert alert-danger">
                                  {{$message}}
                               </div>

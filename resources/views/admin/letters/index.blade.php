@@ -7,15 +7,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                          @if(session('success'))
-                            <h3 class="card-title">{{ session('success') }}</h3>
-                          @elseif(session('failure'))
-                            <h3 class="card-title">{{ session('failure') }}</h3>
-                          @endif
-                        </div>
                         <!-- /.card-header -->
-
+                        <div class="card-header">
+                            <h3 class="card-title">Letters</h3>
+                        </div>
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
