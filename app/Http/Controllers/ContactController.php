@@ -23,8 +23,13 @@ class ContactController extends Controller
         $letter->subject = $request->subject;
         $letter->message = $request->message;
 
-        $letter->save();
 
-        return view('contact');
+        if($letter->save()) {
+            return redirect()->back()->with('success', 'Letter has been send.');
+        } else {
+            return redirect()->back()->with('Something went wrong...');
+        };
+
+        // return view('contact');
     }
 }

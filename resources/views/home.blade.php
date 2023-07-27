@@ -7,6 +7,7 @@
         <hr class="tm-hr-primary">
         <a href="{{ route('posts.detail', $post->slug) }}" class="effect-lily tm-post-link tm-pt-60">
             <div class="tm-post-link-inner">
+                {{ strpos($post->img, "images/") }}
                 <img src="{{ strpos($post->img, "images/") === 0 ? asset("storage/".$post->img) : asset("assets/front/img/img-01.jpg")}}" alt="Image" class="img-fluid">
             </div>
             @if(filled($post->status))

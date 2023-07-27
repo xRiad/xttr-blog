@@ -27,7 +27,7 @@ class PostRequest extends FormRequest
             'video' => 'required|file|mimes:mp4,avi,mov,wmv',
             'description' => 'required|string',
             'status' => 'integer',
-            'category' => 'string',
+            'category' => 'integer',
             'img' => 'required|image|mimes:jpg,png,webp,svg,gif',
             'visibility' => 'integer'
         ];

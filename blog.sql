@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1deb5ubuntu1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 27, 2023 at 09:00 AM
--- Server version: 8.0.33-0ubuntu0.22.04.2
--- PHP Version: 8.1.2-1ubuntu2.13
+-- Generation Time: Jul 27, 2023 at 08:12 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `about` (
   `id` bigint UNSIGNED NOT NULL,
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `about_content` text COLLATE utf8mb4_unicode_ci,
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -51,9 +51,9 @@ INSERT INTO `about` (`id`, `img`, `title`, `about_content`, `created_at`, `updat
 
 CREATE TABLE `about_cards` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -75,10 +75,10 @@ INSERT INTO `about_cards` (`id`, `title`, `content`, `icon`, `created_at`, `upda
 
 CREATE TABLE `about_employes` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `position` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `about` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -101,8 +101,8 @@ INSERT INTO `about_employes` (`id`, `name`, `avatar`, `position`, `about`, `crea
 
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -127,12 +127,12 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALU
 
 CREATE TABLE `comments` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `parent_id` bigint UNSIGNED DEFAULT NULL,
-  `commentary_content` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `commentary_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `post_id` bigint UNSIGNED NOT NULL,
-  `date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -152,14 +152,14 @@ INSERT INTO `comments` (`id`, `name`, `email`, `parent_id`, `commentary_content`
 
 CREATE TABLE `contacts` (
   `id` bigint UNSIGNED NOT NULL,
-  `adress` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `info` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adress` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -179,11 +179,11 @@ INSERT INTO `contacts` (`id`, `adress`, `phone`, `email`, `info`, `facebook`, `t
 
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -195,10 +195,10 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `letters` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -211,7 +211,7 @@ CREATE TABLE `letters` (
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -243,8 +243,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -256,11 +256,11 @@ CREATE TABLE `password_reset_tokens` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -275,17 +275,17 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `posts` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `video` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status_id` int DEFAULT NULL,
   `visibility` tinyint(1) NOT NULL DEFAULT '1',
-  `author` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `views` bigint UNSIGNED NOT NULL DEFAULT '0',
-  `category_slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -294,10 +294,10 @@ CREATE TABLE `posts` (
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `name`, `video`, `img`, `desc`, `slug`, `status_id`, `visibility`, `author`, `views`, `category_slug`, `date`, `created_at`, `updated_at`) VALUES
-(12, 'Single Post of Xtra Blog HTML Template', 'videos/e10c76de-cc19-47dc-b7c9-75e7415b7309.mp4', 'images/16a87b4d-0105-47d9-8626-d7a03ea7d3fd.jpg', '<p>\r\n                                This is a description of the video post. You can also have an image instead of\r\n                                the video. You can free download \r\n                                <a rel=\"nofollow\" href=\"https://templatemo.com/tm-553-xtra-blog\" target=\"_blank\">Xtra Blog Template</a> \r\n                                from TemplateMo website. Phasellus maximus quis est sit amet maximus. Vestibulum vel rutrum\r\n                                lorem, ac sodales augue. Aliquam erat volutpat. Duis lectus orci, blandit in arcu\r\n                                est, elementum tincidunt lectus. Praesent vel justo tempor, varius lacus a,\r\n                        pharetra lacus. </p>\r\n                            <p>\r\n                                Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque\r\n                                dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis\r\n                                quam, id cursus velit. Fusce semper tortor ac metus iaculis varius. Praesent\r\n                                aliquam ex vel lectus ornare tristique. Nunc et eros quis enim feugiat tincidunt\r\n                                et vitae dui.\r\n                            </p><p></p>', 'single-post-of-xtra-blog-html-template', 1, 1, 'Admin Nat', 15, 'visual-designs', 'July 26, 2023', '2023-07-26 13:42:25', '2023-07-27 00:27:07'),
-(13, 'Multi-purpose blog template', 'videos/cb5d0843-4613-4822-a46d-91324500a9a8.mp4', 'images/6e2d9c6c-8e52-4e85-9f88-a45b0a2f35ce.jpg', '<p>\r\n                                This is a description of the video post. You can also have an image instead of\r\n                                the video. You can free download \r\n                                <a rel=\"nofollow\" href=\"https://templatemo.com/tm-553-xtra-blog\" target=\"_blank\">Xtra Blog Template</a> \r\n                                from TemplateMo website. Phasellus maximus quis est sit amet maximus. Vestibulum vel rutrum\r\n                                lorem, ac sodales augue. Aliquam erat volutpat. Duis lectus orci, blandit in arcu\r\n                                est, elementum tincidunt lectus. Praesent vel justo tempor, varius lacus a,\r\n                        pharetra lacus. </p>\r\n                            <p>\r\n                                Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque\r\n                                dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis\r\n                                quam, id cursus velit. Fusce semper tortor ac metus iaculis varius. Praesent\r\n                                aliquam ex vel lectus ornare tristique. Nunc et eros quis enim feugiat tincidunt\r\n                                et vitae dui.\r\n                            </p><p></p>', 'multi-purpose-blog-template', 1, 1, 'Admin Sam', 1, '3', 'July 26, 2023', '2023-07-26 16:02:27', '2023-07-27 00:28:05'),
-(14, 'How can you apply Xtra Blog', 'videos/11224ffd-22fb-4892-91a0-167360c779e3.mp4', 'images/43799148-483c-4d94-b32c-c77737d8a964.jpg', '<p>\r\n                                This is a description of the video post. You can also have an image instead of\r\n                                the video. You can free download \r\n                                <a rel=\"nofollow\" href=\"https://templatemo.com/tm-553-xtra-blog\" target=\"_blank\">Xtra Blog Template</a> \r\n                                from TemplateMo website. Phasellus maximus quis est sit amet maximus. Vestibulum vel rutrum\r\n                                lorem, ac sodales augue. Aliquam erat volutpat. Duis lectus orci, blandit in arcu\r\n                                est, elementum tincidunt lectus. Praesent vel justo tempor, varius lacus a,\r\n                        pharetra lacus. </p>\r\n                            <p>\r\n                                Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque\r\n                                dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis\r\n                                quam, id cursus velit. Fusce semper tortor ac metus iaculis varius. Praesent\r\n                                aliquam ex vel lectus ornare tristique. Nunc et eros quis enim feugiat tincidunt\r\n                                et vitae dui.\r\n                            </p><p></p>', 'how-can-you-apply-xtra-blog', 1, 1, 'John Walker', 1, 'video-and-audio', 'July 27, 2023', '2023-07-27 00:49:42', '2023-07-27 00:51:13');
+INSERT INTO `posts` (`id`, `name`, `video`, `img`, `desc`, `slug`, `status_id`, `visibility`, `author`, `views`, `category_id`, `date`, `created_at`, `updated_at`) VALUES
+(12, 'Single Post of Xtra Blog HTML Template', NULL, '', '<p>\r\n                                This is a description of the video post. You can also have an image instead of\r\n                                the video. You can free download \r\n                                <a rel=\"nofollow\" href=\"https://templatemo.com/tm-553-xtra-blog\" target=\"_blank\">Xtra Blog Template</a> \r\n                                from TemplateMo website. Phasellus maximus quis est sit amet maximus. Vestibulum vel rutrum\r\n                                lorem, ac sodales augue. Aliquam erat volutpat. Duis lectus orci, blandit in arcu\r\n                                est, elementum tincidunt lectus. Praesent vel justo tempor, varius lacus a,\r\n                        pharetra lacus. </p>\r\n                            <p>\r\n                                Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque\r\n                                dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis\r\n                                quam, id cursus velit. Fusce semper tortor ac metus iaculis varius. Praesent\r\n                                aliquam ex vel lectus ornare tristique. Nunc et eros quis enim feugiat tincidunt\r\n                                et vitae dui.\r\n                            </p><p></p>', 'single-post-of-xtra-blog-html-template', 1, 1, 'Admin Nat', 25, 'visual-designs', 'July 26, 2023', '2023-07-26 13:42:25', '2023-07-27 04:09:47'),
+(13, 'Multi-purpose blog template', NULL, '', '<p>\r\n                                This is a description of the video post. You can also have an image instead of\r\n                                the video. You can free download \r\n                                <a rel=\"nofollow\" href=\"https://templatemo.com/tm-553-xtra-blog\" target=\"_blank\">Xtra Blog Template</a> \r\n                                from TemplateMo website. Phasellus maximus quis est sit amet maximus. Vestibulum vel rutrum\r\n                                lorem, ac sodales augue. Aliquam erat volutpat. Duis lectus orci, blandit in arcu\r\n                                est, elementum tincidunt lectus. Praesent vel justo tempor, varius lacus a,\r\n                        pharetra lacus. </p>\r\n                            <p>\r\n                                Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque\r\n                                dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis\r\n                                quam, id cursus velit. Fusce semper tortor ac metus iaculis varius. Praesent\r\n                                aliquam ex vel lectus ornare tristique. Nunc et eros quis enim feugiat tincidunt\r\n                                et vitae dui.\r\n                            </p><p></p>', 'multi-purpose-blog-template', 1, 1, 'Admin Sam', 6, '3', 'July 26, 2023', '2023-07-26 16:02:27', '2023-07-27 04:02:29'),
+(14, 'How can you apply Xtra Blog', NULL, '', '<p>\r\n                                This is a description of the video post. You can also have an image instead of\r\n                                the video. You can free download \r\n                                <a rel=\"nofollow\" href=\"https://templatemo.com/tm-553-xtra-blog\" target=\"_blank\">Xtra Blog Template</a> \r\n                                from TemplateMo website. Phasellus maximus quis est sit amet maximus. Vestibulum vel rutrum\r\n                                lorem, ac sodales augue. Aliquam erat volutpat. Duis lectus orci, blandit in arcu\r\n                                est, elementum tincidunt lectus. Praesent vel justo tempor, varius lacus a,\r\n                        pharetra lacus. </p>\r\n                            <p>\r\n                                Duis pretium efficitur nunc. Mauris vehicula nibh nisi. Curabitur gravida neque\r\n                                dignissim, aliquet nulla sed, condimentum nulla. Pellentesque id venenatis\r\n                                quam, id cursus velit. Fusce semper tortor ac metus iaculis varius. Praesent\r\n                                aliquam ex vel lectus ornare tristique. Nunc et eros quis enim feugiat tincidunt\r\n                                et vitae dui.\r\n                            </p><p></p>', 'how-can-you-apply-xtra-blog', 1, 1, 'John Walker', 6, '6', 'July 27, 2023', '2023-07-27 00:49:42', '2023-07-27 04:02:37');
 
 -- --------------------------------------------------------
 
@@ -334,7 +334,7 @@ INSERT INTO `posts_tags` (`tag_id`, `post_id`, `created_at`, `updated_at`) VALUE
 
 CREATE TABLE `statuses` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -354,7 +354,7 @@ INSERT INTO `statuses` (`id`, `name`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `tags` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -378,11 +378,11 @@ INSERT INTO `tags` (`id`, `name`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -562,7 +562,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tags`

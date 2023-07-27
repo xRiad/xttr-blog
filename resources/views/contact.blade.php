@@ -16,6 +16,11 @@
         <h2 class="tm-color-primary tm-post-title tm-mb-60">Contact Us</h2>
     </div>
     <div class="col-lg-7 tm-contact-left">
+    @if(session('success'))
+    <div class="alert alert-primary">{{ session('success') }}</div>
+    @elseif(session('failure'))
+    <div class="alert alert-danger">{{ session('failure') }}</div>
+    @endif
         <form method="POST" action="{{ route('contact.save') }}" class="mb-5 ml-auto mr-0 tm-contact-form">                        
             @csrf
             <div class="form-group row mb-4">

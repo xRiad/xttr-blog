@@ -90,7 +90,7 @@
                               <label>categories</label>
                               <select name="category" class="form-control select2" style="width: 100%;">
                                 @foreach($categories as $category)
-                                <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                                 <option selected value="0">no category</option>
                               </select>

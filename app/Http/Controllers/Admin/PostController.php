@@ -26,7 +26,6 @@ class PostController extends Controller
     public function index()
     {
         $posts = PostModel::with('tags', 'category', 'status')->get();
-
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
@@ -70,7 +69,7 @@ class PostController extends Controller
             $post->desc = $request->description;
             $post->img = "images{$spr}$imgName";
             $post->status_id = $request->status; 
-            $post->category_slug = $request->category;
+            $post->category_id = $request->category;
 
             $post->visibility = (bool)$request->visibility;
             $post->author = $request->author;
@@ -156,7 +155,7 @@ class PostController extends Controller
             $post->desc = $request->description;
             $post->img = "images{$spr}$imgName";
             $post->status_id = $request->status ? $request->status : null; 
-            $post->category_slug = $request->category ? $request->category : null;
+            $post->category_id = $request->category ? $request->category : null;
 
             $post->visibility = (bool)$request->visibility;
             $post->author = $request->author;

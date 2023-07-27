@@ -24,7 +24,7 @@ class PostModel extends Model
         return $this->belongsToMany(TagModel::class, 'posts_tags', 'post_id', 'tag_id');
     }
     public function category () {
-        return $this->belongsTo(CategoryModel::class, 'category_slug');
+        return $this->belongsTo(CategoryModel::class, 'category_id');
     }
     public function comments () {
         return $this->hasMany(CommentModel::class, 'post_id');
