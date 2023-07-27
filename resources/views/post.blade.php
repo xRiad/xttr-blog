@@ -6,7 +6,7 @@
         <hr class="tm-hr-primary tm-mb-55">
         <!-- Video player 1422x800 -->
         <video width="954" height="535" controls class="tm-mb-40">
-            <source src="{{asset($post->video)}}" type="video/mp4">							  
+            <source src="{{ strpos($post->video, "videos/") === 0 ? asset("storage/".$post->video) : asset("assets/front/video/wheat-field.mp4")}}" type="video/mp4">							  
             Your browser does not support the video tag.
         </video>
     </div>
@@ -37,7 +37,7 @@
                 @foreach($post->comments as $comment)
                 <div class="tm-comment tm-mb-45">
                     <figure class="tm-comment-figure">
-                        <img src="{{asset('assets/front/img/comment-1.jpg')}}" alt="Image" class="mb-2 rounded-circle img-thumbnail">
+                        <img src="{{asset("assets/front/img/comment-1.jpg")}}" alt="Image" class="mb-2 rounded-circle img-thumbnail">
                         <figcaption class="tm-color-primary text-center">{{ $comment->name }}</figcaption>
                     </figure>
                     <div>
@@ -86,7 +86,7 @@
             <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
             <ul class="tm-mb-75 pl-5 tm-category-list">
                 @foreach($categories as $category)
-                <li><a href="{{ route('search.category', $category->id) }}" class="tm-color-primary">{{ $category->name }}</a></li>
+                <li><a href="{{ route('search.category', $category->slug) }}" class="tm-color-primary">{{ $category->name }}</a></li>
                 @endforeach
             </ul>
             @endif
@@ -96,7 +96,7 @@
             @foreach($relatedPosts as $post)
             <a href="#" class="d-block tm-mb-40">
                 <figure>
-                    <img src="img/img-02.jpg" alt="Image" class="mb-3 img-fluid">
+                    <img src="{{ strpos($post->img, "images/") === 0 ? asset("storage/".$post->img) : asset("assets/front/img/img-01.jpg")}}" alt="Image" class="mb-3 img-fluid">
                     <figcaption class="tm-color-primary">{{$post->name}}</figcaption>
                 </figure>
             </a>

@@ -15,6 +15,7 @@ use App\Models\StatusModel;
 use App\Models\TagModel;
 use App\Models\PostTagModel;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class PostController extends Controller
@@ -53,17 +54,25 @@ class PostController extends Controller
             $uuid = Str::uuid();
             $imgName = "{$uuid}.{$imgExtension}";
             $imgPath = "app{$spr}public{$spr}images{$spr}{$imgName}";
-            $resizedImage = Image::make($img)->resize(600, 500)->save(storage_path($imgPath));
+            $resizedImage = Image::make($img)->resize(380, 190)->save(storage_path($imgPath));
 
+            $video = $request->video;
+            $videoExtension = $video->getClientOriginalExtension();
+            $spr = DIRECTORY_SEPARATOR;
+            $uuid = Str::uuid();
+            $videoName = "{$uuid}.{$videoExtension}";
+            $videoPath = "app{$spr}public{$spr}videos{$spr}{$videoName}";
+            Storage::putFileAs("public{$spr}videos", $video, $videoName);
+            
             $post = new PostModel;
             $post->name = $request->name;
-            $post->video = $request->video;
+            $post->video = "videos{$spr}$videoName";
             $post->desc = $request->description;
             $post->img = "images{$spr}$imgName";
             $post->status_id = $request->status; 
-            $post->category_id = $request->category;
+            $post->category_slug = $request->category;
 
-            $post->visibility = $request->visibility;
+            $post->visibility = (bool)$request->visibility;
             $post->author = $request->author;
             $post->date = Carbon::now()->format('F j, Y'); 
 
@@ -80,7 +89,7 @@ class PostController extends Controller
                 }
             }
 
-            return redirect()->back()->with('success', 'post has been saved successfully !');
+            return redirect()->back()->with('success', 'Post has been saved successfully.');
         } catch (Exception $e) {
             return redirect()->back()->with('failure', $e->getMessage());
         }
@@ -115,30 +124,46 @@ class PostController extends Controller
         try {
             $post = PostModel::with('tags')->findOrFail($id);
 
+            $spr = DIRECTORY_SEPARATOR;
 
-            $imgPath = 'app/public/images/' . $post->img;
+            $imgPath = "app{$spr}public{$spr}" . $post->img;
             if (File::exists(storage_path($imgPath))) {
                 File::delete(storage_path($imgPath));
             }
 
+            $videoPath = "app{$spr}public{$spr}" . $post->video;
+            if (File::exists(storage_path($videoPath))) {
+                File::delete(storage_path($videoPath));
+            }
+
+
             $img = $request->img;
             $imgExtension = $img->getClientOriginalExtension();
-            $imgName = time() . '.' . $imgExtension;
-            $imgPath = 'app/public/images/' . $imgName;
-            $resizedImage = Image::make($img)->resize(600, 500)->save(storage_path($imgPath));
+            $uuid = Str::uuid();
+            $imgName = $uuid . '.' . $imgExtension;
+            $imgPath = "app{$spr}public{$spr}images{$spr}" . $imgName;
+            $resizedImage = Image::make($img)->resize(380, 190)->save(storage_path($imgPath));
+
+            $video = $request->video;
+            $videoExtension = $video->getClientOriginalExtension();
+            $uuid = Str::uuid();
+            $videoName = $uuid . '.' . $videoExtension;
+            $videoPath = "app{$spr}public{$spr}videos{$spr}" . $videoName;
+            Storage::putFileAs("public{$spr}videos", $video, $videoName);
 
             $post->name = $request->name;
-            $post->video = $request->video ? $request->video : null;
-            $post->desc = $request->desc;
-            $post->img = $imgName;
+            $post->video = $request->video ? "videos{$spr}$videoName" : null;
+            $post->desc = $request->description;
+            $post->img = "images{$spr}$imgName";
             $post->status_id = $request->status ? $request->status : null; 
-            $post->category_id = $request->category ? $request->category : null;
+            $post->category_slug = $request->category ? $request->category : null;
 
-            $post->visibility = $request->visibility;
+            $post->visibility = (bool)$request->visibility;
             $post->author = $request->author;
 
             $post->save();
-            
+             
+            if(is_array($request->tags)) {
             $tagIds = array_map('intval', $request->tags);
 
             $oldTagIds = $post->tags->pluck('id')->toArray();
@@ -147,7 +172,6 @@ class PostController extends Controller
             $tagDifferenceFromNew = array_diff($tagIds, $oldTagIds);
             $tagDifference = array_merge($tagDifferenceFromOld, $tagDifferenceFromNew);
 
-            if(is_array($request->tags)) {
                 foreach($tagDifference as $tagId) {
                     if (in_array($tagId, $oldTagIds)) {
                         $postTag = PostTagModel::where('tag_id', '=', $tagId)->delete();
@@ -160,7 +184,7 @@ class PostController extends Controller
                 }
             }
 
-            return redirect()->back()->with('success', 'post has been saved successfully !');
+            return redirect()->back()->with('success', 'Post has been edited successfully.');
         } catch (Exception $e) {
             return redirect()->back()->with('failure', $e->getMessage());
         }
@@ -174,7 +198,8 @@ class PostController extends Controller
         try {
             $post = PostModel::find($id);
             if ($post) {
-                $imgPath = 'app/public/images/' . $post->img;
+                $spr = DIRECTORY_SEPARATOR;
+                $imgPath = "app{$spr}public{$spr}" . $post->img;
 
                 if ($imgPath && File::exists(storage_path($imgPath))) {
                     File::delete(storage_path($imgPath));

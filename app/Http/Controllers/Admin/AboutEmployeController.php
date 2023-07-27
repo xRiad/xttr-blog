@@ -44,7 +44,7 @@ class AboutEmployeController extends Controller
        $uuid = Str::uuid();
        $imgName = "{$uuid}.{$imgExtension}";
        $imgPath = "app{$spr}public{$spr}images{$spr}{$imgName}";
-       $resizedImage = Image::make($img)->resize(600, 500)->save(storage_path($imgPath));
+       $resizedImage = Image::make($img)->resize(120, 210)->save(storage_path($imgPath));
 
        $employe->name = $request->name;
        $employe->avatar = "images{$spr}$imgName";
@@ -84,7 +84,6 @@ class AboutEmployeController extends Controller
         $spr = DIRECTORY_SEPARATOR;
         
         $imgPath = "app{$spr}public{$spr}{$employe->avatar}"; 
-        $imgPath = str_replace(['\\', '/'], $spr, $imgPath);
         if(File::exists(storage_path($imgPath))) {
             File::delete(storage_path($imgPath));
         }
@@ -95,7 +94,7 @@ class AboutEmployeController extends Controller
         $uuid = Str::uuid();
         $imgName = "{$uuid}.{$imgExtension}";
         $imgPath = "app{$spr}public{$spr}images{$spr}{$imgName}";
-        $resizedImage = Image::make($img)->resize(600, 500)->save(storage_path($imgPath));
+        $resizedImage = Image::make($img)->resize(120, 210)->save(storage_path($imgPath));
 
         $employe->name = $request->name;
         $employe->position = $request->position;

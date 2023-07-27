@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\AboutModel;
-// use Intervention\Image\Facades\Image;
+use Intervention\Image\Facades\Image;
 
 class AboutSeeder extends Seeder
 {
@@ -15,7 +15,7 @@ class AboutSeeder extends Seeder
     public function run(): void
     {
         AboutModel::firstOrCreate([
-            'img' => 'about_1.jpg',
+            'img' => '',
             'title' => 'About this xtra blog',
             'about_content' => '
                 <p>

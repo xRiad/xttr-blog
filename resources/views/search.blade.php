@@ -7,7 +7,7 @@
         <hr class="tm-hr-primary">
         <a href="{{ route('posts.detail', $post->slug) }}" class="effect-lily tm-post-link tm-pt-60">
             <div class="tm-post-link-inner">
-                <img src="assets/front/img/img-01.jpg" alt="Image" class="img-fluid">                            
+                <img src="{{  strpos($post->img, "images/") === 0 ? asset("storage/".$post->img) : asset("assets/front/img/img-01.jpg")}}" alt="Image" class="img-fluid">                            
             </div>
             @if(filled($post->status))
             <span class="position-absolute tm-new-badge">{{ $post->status->name }}</span>
@@ -15,16 +15,19 @@
             <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ $post->name }}</h2>
         </a>                    
         <p class="tm-pt-30">
-            {{ substr($post->desc, 0, 50) }}...
+            {!! substr($post->desc, 0, 200) !!}...
         </p>
         <div class="d-flex justify-content-between tm-pt-45">
             <span class="tm-color-primary">
-                @foreach($post->tags as $tag)
-                    {{ $tag->name }}
+                @foreach($post->tags as $tag) 
+                {{ $tag->name }}
+                    @if(!($loop->last))
+                        .
+                    @endif
                 @endforeach
             </span>
-            <span class="tm-color-primary">June 24, 2020</span>
-            <span class="tm-color-primary">views - {{ $post->views }}</span>
+            <span class="tm-color-primary">{{ $post->date }}</span>
+            <span class="tm-color-primary">views: {{ $post->views }}</span>
         </div>
         <hr>
         <div class="d-flex justify-content-between">
@@ -34,7 +37,7 @@
     </article>  
     @endforeach
     @if(count($posts) === 0)
-    There is nothing there for now !
+    <div class="alert-primary alert">There is nothing there for now !</div>
     @endif
 </div>
 {{-- Pagination --}}

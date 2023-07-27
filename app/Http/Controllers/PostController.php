@@ -19,12 +19,12 @@ class PostController extends Controller
     {
         $post = PostModel::with('tags', 'comments')->where('slug', '=', $slug)->firstOrFail();
         $tagids=$post->tags->pluck('id');
-        $categoryid = $post->category_id;
+        $categorySlug = $post->category_slug;
 
         $relatedposts = PostModel::wherehas('tags',function ($query) use($tagids) {
             $query->wherein('tag_id',$tagids);
-        })->wherehas('category', function ($query) use($categoryid) {
-            $query->where('id','=',$categoryid);
+        })->wherehas('category', function ($query) use($categorySlug) {
+            $query->where('slug','=',$categorySlug);
         })->where('slug', '<>', $slug)->get();
 
         $categories = categorymodel::all();
@@ -37,12 +37,12 @@ class PostController extends Controller
     public function random() {
         $post = PostModel::inRandomOrder()->with('tags', 'comments')->firstOrFail();
         $tagids=$post->tags->pluck('id');
-        $categoryid = $post->category_id;
+        $categorySlug = $post->category_slug;
 
         $relatedposts = PostModel::wherehas('tags',function ($query) use($tagids) {
             $query->wherein('tag_id',$tagids);
-        })->wherehas('category', function ($query) use($categoryid) {
-            $query->where('id','=',$categoryid);
+        })->wherehas('category', function ($query) use($categorySlug) {
+            $query->where('slug','=',$categorySlug);
         })->get();
 
         $categories = CategoryModel::all();

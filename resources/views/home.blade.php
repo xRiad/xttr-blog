@@ -1,13 +1,13 @@
 @extends('front.layouts.app')
-
 @section('content')
 <div class="row tm-row">
     @foreach($posts as $post)
+    @if($post->visibility)
     <article class="col-12 col-md-6 tm-post">
         <hr class="tm-hr-primary">
         <a href="{{ route('posts.detail', $post->slug) }}" class="effect-lily tm-post-link tm-pt-60">
             <div class="tm-post-link-inner">
-                <img src="assets/front/img/img-01.jpg" alt="Image" class="img-fluid">
+                <img src="{{ strpos($post->img, "images/") === 0 ? asset("storage/".$post->img) : asset("assets/front/img/img-01.jpg")}}" alt="Image" class="img-fluid">
             </div>
             @if(filled($post->status))
             <span class="position-absolute tm-new-badge">{{ $post->status->name }}</span>
@@ -19,12 +19,15 @@
         </p>
         <div class="d-flex justify-content-between tm-pt-45">
             <span class="tm-color-primary">
-                @foreach($post->tags as $tag)
-                    {{ $tag->name }}
+                @foreach($post->tags as $tag) 
+                {{ $tag->name }}
+                    @if(!($loop->last))
+                        .
+                    @endif
                 @endforeach
             </span>
             <span class="tm-color-primary">{{ $post->date }}</span>
-            <span class="tm-color-primary">views - {{ $post->views }}</span>
+            <span class="tm-color-primary">views: {{ $post->views }}</span>
         </div>
         <hr>
         <div class="d-flex justify-content-between">
@@ -32,6 +35,7 @@
             <span>by {{ $post->author }}</span>
         </div>
     </article>
+    @endif
     @endforeach
     @if($posts->isEmpty())
     <div class="alert-primary alert">There is nothing there for now !</div>

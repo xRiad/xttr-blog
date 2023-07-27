@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 use App\Models\AboutModel;
 use App\Http\Requests\AboutRequest;
 
@@ -23,20 +24,20 @@ class AboutController extends Controller
         $about->title = $request->title;
         $about->about_content = $request->about_content;
 
-        $imgPath = 'app/public/images/' . $about->img;
+        $spr = DIRECTORY_SEPARATOR;
+        $imgPath = "app{$spr}public{$spr}" . $about->img;
         if(File::exists(storage_path($imgPath))) {
             File::delete(storage_path($imgPath));
         }
 
         $img = $request->img;
         $imgExtension = $img->getClientOriginalExtension();
-        $spr = DIRECTORY_SEPARATOR;
         $uuid = Str::uuid();
         $imgName = "{$uuid}.{$imgExtension}";
         $imgPath = "app{$spr}public{$spr}images{$spr}{$imgName}";
-        $resizedImage = Image::make($img)->resize(600, 500)->save(storage_path($imgPath));
+        $resizedImage = Image::make($img)->resize(800, 450)->save(storage_path($imgPath));
 
-        $about->img = $imgName;
+        $about->img = "images{$spr}$imgName";
 
         if ($about->save()) {
             return redirect()->back()->with('success', 'About page has been succsessfully modified.');

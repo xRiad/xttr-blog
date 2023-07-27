@@ -24,10 +24,10 @@ class PostRequest extends FormRequest
         return [
             'name' => 'required|min:3',
             'author' => 'required|string',
-            'video' => 'string',
+            'video' => 'required|file|mimes:mp4,avi,mov,wmv',
             'description' => 'required|string',
             'status' => 'integer',
-            'category' => 'integer',
+            'category' => 'string',
             'img' => 'required|image|mimes:jpg,png,webp,svg,gif',
             'visibility' => 'integer'
         ];

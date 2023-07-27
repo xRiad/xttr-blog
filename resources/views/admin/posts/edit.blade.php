@@ -9,7 +9,6 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                          text: {{session('failure')}}
                           @if(session('success'))
                             <h3 class="card-title alert-success alert">{{ session('success') }}</h3>
                           @elseif(session('failure'))
@@ -43,18 +42,26 @@
                               @enderror
                             </div>
                             <div class="form-group">
-                              <label for="exampleinputemail1">video</label>
-                              <input type="text" name="video" value="{{ old('video', $post->video) }}" class="form-control @error('video') is-invalid @enderror" placeholder="video">
+                              <label for="exampleinputfile">video</label>
+                              <div class="input-group">
+                                <div class="custom-file">
+                                  <input type="file" name="video" class="custom-file-input" id="exampleinputfile">
+                                  <label class="custom-file-label" for="exampleinputfile">choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                  <span class="input-group-text">upload</span>
+                                </div>
+                              </div>
                               @error('video')
                               <div class="alert alert-danger">
-                                 {{$message}}
+                                {{$message}}
                               </div>
                               @enderror
                             </div>
                             <div class="form-group">
                               <label for="desc">description</label>
-                              <textarea name="desc" id="summernote">{!! old('desc', $post->desc) !!}</textarea>
-                              @error('desc')
+                              <textarea name="description" id="summernote">{!! old('description', $post->desc) !!}</textarea>
+                              @error('description')
                               <div class="alert alert-danger">
                                  {{$message}}
                               </div>
@@ -81,7 +88,7 @@
                               <label>categories</label>
                               <select name="category" class="form-control select2" style="width: 100%;">
                                 @foreach($categories as $category)
-                                <option @if($post->category?->id === $category->id) selected @endif value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option @if($post->category?->id === $category->slug) selected @endif value="{{ $category->slug }}">{{ $category->name }}</option>
                                 @endforeach
                                 <option @if(!in_array($post->category?->id, $categories->pluck('id')->toArray(), true)) selected @endif value="0">no category</option>
                               </select>
@@ -121,7 +128,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-switch">
-                                  <input type="checkbox" name="visibility" value="1" class="custom-control-input" id="customswitch1" checked>
+                                  <input type="checkbox" name="visibility" value="{{ old('visibility', $post->visibility) }}" class="custom-control-input" id="customswitch1" @if($post->visibility) checked @endif>
                                   <label class="custom-control-label" for="customswitch1">visbility</label>
                                 </div>
                                 @error('visibility')

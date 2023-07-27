@@ -43,11 +43,19 @@
                               @enderror
                             </div>
                             <div class="form-group">
-                              <label for="exampleinputemail1">video</label>
-                              <input type="text" name="video" class="form-control @error('video') is-invalid @enderror" placeholder="video">
+                              <label for="exampleinputfile">video</label>
+                              <div class="input-group">
+                                <div class="custom-file">
+                                  <input type="file" name="video" class="custom-file-input" id="exampleinputfile">
+                                  <label class="custom-file-label" for="exampleinputfile">choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                  <span class="input-group-text">upload</span>
+                                </div>
+                              </div>
                               @error('video')
                               <div class="alert alert-danger">
-                                 {{$message}}
+                                {{$message}}
                               </div>
                               @enderror
                             </div>
@@ -82,9 +90,9 @@
                               <label>categories</label>
                               <select name="category" class="form-control select2" style="width: 100%;">
                                 @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                <option selected value="0">no category</option>
+                                <option value="{{ $category->slug }}">{{ $category->name }}</option>
                                 @endforeach
+                                <option selected value="0">no category</option>
                               </select>
                               @error('category')
                               <div class="alert alert-danger">
@@ -105,7 +113,7 @@
                               </div>
                             @endif
                             <div class="form-group">
-                              <label for="exampleinputfile">file input</label>
+                              <label for="exampleinputfile">image</label>
                               <div class="input-group">
                                 <div class="custom-file">
                                   <input type="file" name="img" class="custom-file-input" id="exampleinputfile">
